@@ -6,6 +6,7 @@ using AutoMapper;
 using Forum.Auth;
 using BCrypt.Net;
 using Forum.Controllers;
+using System.Linq;
 
 namespace Forum.Services
 {
@@ -14,10 +15,10 @@ namespace Forum.Services
     {
         void CreatePost(CreatePostRequest model);
         IEnumerable<Forumpost> GetForumPosts();
-        Forumpost GetPostFromId(int Id);
-        void UpdatePost(int id,UpdatePost model);
-        void RemovePost(int id);
-        User GetFromId(int Id);
+        Forumpost GetPostFromId(int id);
+        void UpdatePost(int id, UpdatePost model);
+        void RemovePost(int id, DeletePostRequest model);
+        //User GetFromId(int Id);
     }
 
     public class ForumpostService : IForumpostService
@@ -39,10 +40,10 @@ namespace Forum.Services
         public void CreatePost(CreatePostRequest model)
         {
             var user = _dataContext.Users.Where(u => u.Username == model.User.Username).FirstOrDefault();
-            if (_dataContext.ForumPosts.Any(post => post.Title == model.Title))
-            {
-                throw new CustomException("The title" + model.Title + "Is already taken!");
-            }
+            //if (_dataContext.ForumPosts.Any(post => post.Title == model.Title))
+            //{
+            //    throw new CustomException("The title" + model.Title + "Is already taken!");
+            //}
 
             _dataContext.Add(new Forumpost()
             {
@@ -54,16 +55,16 @@ namespace Forum.Services
             }); ;
             _dataContext.SaveChanges();
         }
-        public User GetFromId(int id)
-        {
-            var userById = _dataContext.Users.Find(id);
+        //public User GetFromId(int id)
+        //{
+        //    var userById = _dataContext.Users.Find(id);
 
-            if (userById == null)
-            {
-                throw new KeyNotFoundException("User doesn't exist");
-            }
-            return userById;
-        }
+        //    if (userById == null)
+        //    {
+        //        throw new KeyNotFoundException("User doesn't exist");
+        //    }
+        //    return userById;
+        //}
 
         public IEnumerable<Forumpost> GetForumPosts()
         {
@@ -73,36 +74,36 @@ namespace Forum.Services
         {
             var postById = _dataContext.ForumPosts.Find(id);
 
-            if (postById == null)
-            {
-                throw new KeyNotFoundException("Post doesn't exist");
-            }
             return postById;
         }
 
         public void UpdatePost(int id, UpdatePost model)
         {
-
             var postUpdate = _dataContext.ForumPosts.Find(id);
 
-            if (_dataContext.ForumPosts.Any(postUpdate => postUpdate.Title == model.Title))
+            if (postUpdate != null)
             {
-                throw new CustomException("Title already exists!");
+                if (postUpdate.Title != null)
+                    postUpdate.Title = model.Title;
+
+                if (postUpdate.Content != null)
+                    postUpdate.Content = model.Content;
+
+                _dataContext.SaveChanges();
+
             }
-            if (postUpdate.Title != null)
-                postUpdate.Title = model.Title;
+            else
+            {
 
-            if (postUpdate.Content != null)
-                postUpdate.Content = model.Content;
-
-            _dataContext.SaveChanges();
-
+            }
         }
 
-        public void RemovePost(int id)
+        public void RemovePost(int id, DeletePostRequest model)
         {
             var post = _dataContext.ForumPosts.Find(id);
+
             _dataContext.ForumPosts.Remove(post);
+
             _dataContext.SaveChanges();
         }
 

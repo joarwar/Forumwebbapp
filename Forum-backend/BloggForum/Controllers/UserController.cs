@@ -8,21 +8,22 @@ using Forum.Helpers;
 using Forum.Auth;
 using Forum.Controllers;
 using Forum.Db_Context;
+
 namespace Forum.Controllers
 {
-    //[Authorize]
+    [Authorize]
     [ApiController]
     [Route("[controller]")]
     public class UserController : ControllerBase
     {
         IUserService _userService;
-        //private readonly HttpContext _context;
+        private DataContext _dataContext;
 
-        public UserController(IUserService userService) //HttpContext context*/
+        public UserController(IUserService userService, DataContext context) //HttpContext context*/
         {
             _userService = userService;
-            //_context = context;
-            
+            _dataContext = context;
+
         }
         [AllowAnonymous]
         [HttpGet("getUsers")]
@@ -62,7 +63,11 @@ namespace Forum.Controllers
         [HttpPost("createUser")]
         public IActionResult CreateNewUser(CreateUserRequest userModel)
         {
-            _userService.CreateNewUser(userModel);
+            if (_dataContext.Users.Any(user => user.Username == userModel.Username))
+            {
+                return BadRequest("User not found");
+            }
+            
 
             return Ok(new { userModel.Username });
 
@@ -72,6 +77,18 @@ namespace Forum.Controllers
         [HttpPost("authUser")]
         public IActionResult UserAuth(UserAuthRequest authModel)
         {
+            var authUser = _dataContext.Users.FirstOrDefault(u => u.Username == authModel.Username);
+
+            if (authUser == null)
+            {
+                return BadRequest("Username or password was wrong/not found");
+
+            }
+            if (!BCrypt.Net.BCrypt.Verify(authModel.Password, authUser.Password))
+            {
+                return BadRequest("Username or password was wrong/not found");
+            }
+
             var response = _userService.UserAuth(authModel);
             var id = response.Id;
 

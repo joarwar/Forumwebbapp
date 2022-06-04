@@ -63,6 +63,7 @@ namespace Forum.Services
         public User GetFromName([FromQuery] UserByNameRequest userModel)
         {
             var userId = _dataContext.Users.FirstOrDefault(user => user.Username == userModel.Username);
+
             return (User)userId;
         }
 
@@ -70,10 +71,10 @@ namespace Forum.Services
         public void CreateNewUser(CreateUserRequest userModel)
         {
 
-            if (_dataContext.Users.Any(user => user.Username == userModel.Username))
-            {
-                throw new CustomException("User " + userModel.Username + " already exists!");
-            }
+            //if (_dataContext.Users.Any(user => user.Username == userModel.Username))
+            //{
+            //    throw new CustomException("User " + userModel.Username + " already exists!");
+            //}
 
             userModel.Password = BCrypt.Net.BCrypt.HashPassword(userModel.Password);
 
@@ -93,14 +94,8 @@ namespace Forum.Services
             var authUser = _dataContext.Users.SingleOrDefault(u => u.Username == request.Username);
 
 
-            if (!BCrypt.Net.BCrypt.Verify(request.Password, authUser.Password))
-                throw new CustomException("Wrong username or password!"); ;
-
             //if (!BCrypt.Net.BCrypt.Verify(request.Password, authUser.Password))
-            //{
-            //    throw new CustomException("Wrong username or password!");
-            //}
-
+            //    throw new CustomException("Wrong username or password!"); ;
             //sucess v
             var response = _mapper.Map<UserAuthResponse>(authUser);
 
