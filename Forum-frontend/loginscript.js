@@ -71,12 +71,14 @@ async function postLoginRequest(formUsername, formPassword) {
         
         ).catch((e) => {
             console.error("Error:" + e);
+            alert("Username or password is wrong/not found!")
         }
         )
 
     } catch (e) {
 
         console.error("Error:" + e);
+        alert("Username or password is wrong/not found!")
     }
 
 

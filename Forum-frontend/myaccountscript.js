@@ -56,12 +56,14 @@ async function deleteUserSubmit() {
 
         ).catch((e) => {
             console.error("Error:" + e);
+            alert("Post id not found!");
         }
         )
 
     } catch (e) {
 
         console.error("Error:" + e);
+        alert("Post id not found!");
     }
 
 
@@ -230,18 +232,19 @@ async function updatePostRequest(postId, newTitle, newContent) {
 
         ).then(jsonData => {
             
-            window.location.href = "/index.html";
 
         }
 
         ).catch((e) => {
             console.error("Error:" + e);
+            alert("Post id not found!");
         }
         )
 
     } catch (e) {
 
         console.error("Error:" + e);
+        alert("Post id not found!");
     }
 }
 
@@ -259,10 +262,14 @@ async function deletePostSubmit() {
     }
 
 }
+
 async function deletePostRequest(deletePostId){
     try {
+        const inputPostDelete=        {
+            "id": deletePostId
+          };
 
-        await fetch("https://localhost:44383/Forumpost/deletePost?id=" + deletePostId, {
+        await fetch("https://localhost:44383/Forumpost/deletePost?id=" + deletePostId , {
 
             method: "DELETE",
             headers: {
@@ -272,24 +279,26 @@ async function deletePostRequest(deletePostId){
                 "Access-Control-Allow-Methods": "*",
                 "Access-Control-Allow-Headers": "*"
             },
-            body: JSON.stringify(deletePostId)
+            body: JSON.stringify(inputPostDelete)
 
         }).then(response => response.json()
 
         ).then(jsonData => {
 
-            window.location.href = "/index.html";
+            //window.location.href = "/index.html";
 
         }
 
         ).catch((e) => {
             console.error("Error:" + e);
+            alert("Post id not found!");
         }
         )
 
     } catch (e) {
 
         console.error("Error:" + e);
+        alert("Post id not found!");
     }
 
 }
