@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="poststyle.css">
+    <meta charset="utf-8">
+    <meta name="description" content="post stuff">
+    <meta name="keywords" content="post,forum,css, HTML">
+    <meta name="author" content="Joar Warholm">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forum</title>
+</head>
+
+<body>
+    <div class="top-bar">
+        <a href="/index.html">Home</a>
+        ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+        ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+        <a href="/login.html">Login</a>
+        ⠀⠀
+        <a href="/register.html">Register</a>
+        ⠀⠀
+        <a href="myaccount.html">User</a>
+        ⠀⠀
+        <a id="logout-button"href="/login.html">Log out</a>
+    </div>
+    <div class="main">
+        <div class="header">
+            <h4 class="title">
+                Thread 1
+            </h4>
+
+            <p class="text-content">
+                text-content
+            </p>
+
+            <div class="bottom">
+                <p class="timepost">
+                    16/5/22
+                </p>
+                ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+                <p id="like-counter" onClick="onClick()">
+                    Like
+                </p>
+
+                ⠀
+                <p>
+                    <span id="liked"></span>
+                </p>
+
+            </div>
+        </div>
+        <textarea id="comment-box"></textarea>
+        <button id="post"> Comment</button>
+        <div class="comments">
+            <div class="one-comment">
+                <div class="top-comment">
+                    <li id="user">
+                        
+
+                    </li>
+                    <li id="comment-timepost">
+                        
+                    </li>
+                </div>
+                <li id="comment-content">
+                    
+                </li>
+            </div>
+
+
+        </div>
+
+        <script src="postscript.js"></script>
+</body>
+
+</html>

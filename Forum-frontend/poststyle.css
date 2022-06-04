@@ -1,0 +1,83 @@
+body {
+    margin: 10px 60px;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+h1,
+h4 {
+    margin: 0;
+}
+
+.top-bar {
+    margin: 0;
+}
+
+li {
+    margin: 5px 0;
+    list-style: none
+}
+
+.top-bar {
+    background-color: skyblue;
+    padding: 0 40px;
+    font-size: 40px;
+    font-family: 'Times New Roman', Times, serif;
+
+}
+
+.top-bar a:hover {
+    background-color: #009AEE;
+    color: black;
+}
+
+.main {
+    background-color: #F6F6EF;
+    padding: 10px 15px;
+}
+
+.row {
+    padding: 5px 0;
+}
+
+textarea {
+    width: 30%;
+    height: 80px;
+}
+
+button {
+    display: block;
+    margin: 10px 0;
+}
+
+.bottom,
+.top-comment {
+    display: flex;
+    color: grey;
+    font-size: 15;
+}
+#user{
+    margin: 5px;
+}
+
+.comments {
+    margin: 40px 0;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+
+.one-comment {
+    margin: 30px 0;
+}
+
+.comment-timepost {
+    padding-left: 10px;
+}
+
+.timepost {
+    padding-right: 10px;
+    display: flex;
+}

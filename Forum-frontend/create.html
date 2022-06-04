@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="createstyle.css">
+    <meta charset="utf-8">
+    <meta name="description" content="post stuff">
+    <meta name="keywords" content="post,forum,css, HTML">
+    <meta name="author" content="Joar Warholm">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forum</title>
+</head>
+
+<body>
+    <div class="top-bar">
+        <a href="/index.html">Home</a>
+        ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+        ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+
+        <a id="user-button" href="/myaccount.html">User</a>
+        ⠀⠀⠀⠀
+        <a id="logout-button" href="/login.html">Log out</a>
+    </div>
+    <form id="createpost-form" onsubmit="createPostSubmit();">
+
+        <div >
+            <label for="title">Title</label>
+            <input type="text" id="title" required maxlength="15" minlength="3">
+        </div>
+
+        <div>
+            <label for="content">Content</label>
+            <textarea id="content"></textarea>
+        </div>
+
+        <button href="/index.html" type="submit"> Create post</button>
+    </form>
+
+    <footer id="info">
+        <p>
+            Made by:
+            <a href="https://github.com/joarwar/">Joar Warholm</a>
+
+        </p>
+    </footer>
+    <script src="createscript.js" defer></script>
+</body>
+
+</html>

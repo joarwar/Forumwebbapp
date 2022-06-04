@@ -1,0 +1,29 @@
+
+body {
+    margin: 10px 60px;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+.top-bar {
+    background-color: skyblue;
+    padding: 0 40px;
+    font-size: 40px;
+    font-family: 'Times New Roman', Times, serif;
+
+}
+
+.top-bar a:hover {
+    background-color: #009AEE;
+    color: black;
+}
+#info{
+    text-align: center;
+    font-size:15px;
+    font-family: 'Times New Roman', Times, serif;
+    margin-top:50px;
+}

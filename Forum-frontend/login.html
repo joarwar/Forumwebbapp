@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="loginstyle.css"> 
+    <meta charset="utf-8">
+    <meta name="description" content="post stuff">
+    <meta name="keywords" content="post,forum,css, HTML">
+    <meta name="author" content="Joar Warholm">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forum</title>
+</head>
+<body>
+  <div class="top-bar">
+    <a href="/index.html">Home</a>
+    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+
+      <a href="/register.html">Register</a>
+  </div>
+<form id="login-form" onsubmit="loginSubmit();">
+
+  <div>
+    <label for="username">Username</label>
+    <input type="text" id="username" required maxlength="15" minlength="3">
+  </div>
+
+  <div>
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password" required maxlength="15" minlength="3">
+  </div>
+
+  <button type="submit"> Log in</button>
+</form> 
+
+<div>
+<ul id="forum-posts">
+</ul>
+</div>
+
+
+<footer id="info">
+  <p>
+      Made by:
+      <a href="https://github.com/joarwar/">Joar Warholm</a>
+
+  </p>
+</footer>
+</body>
+<script src="loginscript.js" defer></script> 
+</html>

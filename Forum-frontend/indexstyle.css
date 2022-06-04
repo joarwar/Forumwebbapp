@@ -1,0 +1,94 @@
+body {
+    margin: 10px 60px;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+.top-bar {
+    background-color: skyblue;
+    padding: 0 40px;
+    font-size: 40px;
+    font-family: 'Times New Roman', Times, serif;
+
+}
+
+.top-bar a:hover {
+    background-color: #009AEE;
+    color: black;
+}
+
+h1,
+h4,
+ol {
+    margin: 0;
+}
+
+p {
+    margin: 5px 0;
+}
+
+#user{
+    padding-right: 5px;
+}
+.top-bar {
+    background-color: skyblue;
+    padding: 0 40px;
+}
+
+.main {
+    background-color: #F6F6EF;
+    padding: 10px 15px;
+}
+
+.row {
+    padding: 5px 0;
+}
+
+.bottom {
+    display: flex;
+    color: grey;
+    font-size: 12px;
+}
+
+.timepost {
+    padding-right: 10px;
+}
+#info{
+    text-align: center;
+    font-size:15px;
+    font-family: 'Times New Roman', Times, serif;
+    margin-top:50px;
+}
+
+li {
+    margin: 5px 0;
+    list-style: none
+}
+textarea {
+    width: 30%;
+    height: 80px;
+}
+button {
+    display: block;
+    margin: 10px 0;
+}
+.comments {
+    margin: 40px 0;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+
+.one-comment {
+    margin: 30px 0;
+}
+
+.comment-timepost {
+    padding-left: 10px;
+}
+
+.timepost {
+    padding-right: 10px;
+    display: flex;
+}

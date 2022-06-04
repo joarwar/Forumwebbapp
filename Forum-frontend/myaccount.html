@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="myaccountstyle.css"> 
+    <meta charset="utf-8">
+    <meta name="description" content="post stuff">
+    <meta name="keywords" content="post,forum,css, HTML">
+    <meta name="author" content="Joar Warholm">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forum</title>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="/index.html">Home</a>
+        ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+        ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+
+        <a id="create-button"href="/create.html">Create post</a>
+        ⠀⠀
+        <a id="register-button" href="/register.html">Register</a>
+        ⠀⠀
+        <a id="logout-button"href="/login.html">Log out</a>
+    </div>
+    <div class="main">
+        <form id="delete-post" onsubmit="deletePostSubmit()">
+            <label for="deletePost">Remove post by id</label>
+            <input type="text" id="deletePostId">
+            <button type="submit">Delete</button>
+        </form>
+        <form id="update-post" onsubmit="updatePostSubmit()">
+            <label for="title">Update post by id</label>
+            <input type="text" id="titleId">
+            <label for="updateTitle">New Title:</label>
+            <input type="text" id="newTitle">
+            <label for="newContent">New Content:</label>
+            <input type="text" id="newContent">
+            <button type="submit"> Update Post</button>
+        </form>
+
+        <form id="show-users" onsubmit="showUserSubmit()" >
+            <label for="searchUser">Search user by id</label>
+            <input type="text" id="searchUserId">
+            <button type="submit"> Search</button>
+        </form>
+
+        <form id="update-user" onsubmit="updateUserSubmit()">
+            <label for="updateUsername">New username:</label>
+            <input type="text" id="newUsername">
+            <label for="updatePassword">New password:</label>
+            <input type="password" id="newPassword">
+            <button type="submit"> Update User</button>
+        </form>
+        
+        <form id ="delete-user" onsubmit="deleteUserSubmit()">
+            <button type="submit"> Delete User</button>
+        </form>
+
+    </div>
+    <footer id="info">
+        <p>
+            Made by:
+            <a href="https://github.com/joarwar/">Joar Warholm</a>
+      
+        </p>
+      </footer>
+      <script src="myaccountscript.js" defer></script> 
+</body>
+</html>
