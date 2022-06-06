@@ -71,27 +71,26 @@ namespace Forum.Services
         public void CreateNewUser(CreateUserRequest userModel)
         {
 
-            //if (_dataContext.Users.Any(user => user.Username == userModel.Username))
-            //{
-            //    throw new CustomException("User " + userModel.Username + " already exists!");
-            //}
-
-            userModel.Password = BCrypt.Net.BCrypt.HashPassword(userModel.Password);
-
-            _dataContext.Add(new User()
+            if (_dataContext.Users.Any(user => user.Username != userModel.Username))
             {
-                Username = userModel.Username,
-                Password = userModel.Password,
-            });
+                userModel.Password = BCrypt.Net.BCrypt.HashPassword(userModel.Password);
 
-            _dataContext.SaveChanges();
+                _dataContext.Add(new User()
+                {
+                    Username = userModel.Username,
+                    Password = userModel.Password,
+                });
+
+                _dataContext.SaveChanges();
+            }
+
 
         }
 
         public UserAuthResponse UserAuth(UserAuthRequest request)
         {
 
-            var authUser = _dataContext.Users.SingleOrDefault(u => u.Username == request.Username);
+            var authUser = _dataContext.Users.FirstOrDefault(u => u.Username == request.Username);
 
 
             //if (!BCrypt.Net.BCrypt.Verify(request.Password, authUser.Password))
@@ -112,22 +111,22 @@ namespace Forum.Services
         {
             var userUpdate = _dataContext.Users.Find(id);
 
-            if (_dataContext.Users.Any(userUpdate => userUpdate.Username == userModel.Username))
+            if (_dataContext.Users.Any(userUpdate => userUpdate.Username != userModel.Username))
             {
-                throw new CustomException("Username already exists!");
+                if (userUpdate.Username != null)
+                    userUpdate.Username = userModel.Username;
+
+
+                if (userUpdate.Password != null)
+                    userUpdate.Password = userModel.Password;
+
+                userUpdate.Password = BCrypt.Net.BCrypt.HashPassword(userUpdate.Password);
+
+                _dataContext.SaveChanges();
             }
 
-            if (userUpdate.Username != null)
-                userUpdate.Username = userModel.Username;
 
-
-            if (userUpdate.Password != null)
-                userUpdate.Password = userModel.Password;
-
-            userUpdate.Password = BCrypt.Net.BCrypt.HashPassword(userUpdate.Password);
-
-            _dataContext.SaveChanges();
-  
+        
 
         }
         public void RemoveUser(int id)

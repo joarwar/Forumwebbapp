@@ -123,12 +123,14 @@ async function userUpdateRequest(newFormUsername, newFormPassword) {
 
         ).catch((e) => {
             console.error("Error:" + e);
+            alert("Username taken!");
         }
         )
 
     } catch (e) {
 
         console.error("Error:" + e);
+        alert("Username taken!");
     }
 }
 

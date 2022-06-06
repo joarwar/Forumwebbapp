@@ -65,11 +65,13 @@ namespace Forum.Controllers
         {
             if (_dataContext.Users.Any(user => user.Username == userModel.Username))
             {
-                return BadRequest("User not found");
+                return BadRequest("Username taken");
             }
-            
+
+            _userService.CreateNewUser(userModel);
 
             return Ok(new { userModel.Username });
+
 
         }
 
@@ -100,7 +102,15 @@ namespace Forum.Controllers
         [HttpPatch("updateUser")]
         public IActionResult UpdateUser(int id,UpdateUser userModel)
         {
-            _userService.UpdateUser(id,userModel);
+
+            if (_dataContext.Users.Any(user => user.Username == userModel.Username))
+            {
+                return BadRequest("Username or password taken");
+
+
+            }
+
+            _userService.UpdateUser(id, userModel);
             return Ok(new { message = "Update done!" });
         }
         [HttpDelete("deleteUser")]

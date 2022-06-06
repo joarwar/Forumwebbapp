@@ -52,9 +52,11 @@ namespace Forum.Services
                 ImageUrl = "no image chosen",
                 Content = model.Content,
                 User = user
-            }); ;
+            }); 
             _dataContext.SaveChanges();
         }
+
+
         //public User GetFromId(int id)
         //{
         //    var userById = _dataContext.Users.Find(id);

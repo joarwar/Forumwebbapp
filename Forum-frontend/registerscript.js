@@ -59,12 +59,14 @@ async function postRegisterRequest(formUsername, formPassword) {
         
         ).catch((e) => {
             console.error("Error:" + e);
+            alert("Username taken!");
         }
         )
 
     } catch (e) {
 
         console.error("Error:" + e);
+        alert("Username taken!");
     }
 
 

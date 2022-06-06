@@ -77,6 +77,7 @@ namespace Forum.Controllers
                 _forumPostService.UpdatePost(id, model);
                 return Ok(new { message = "Update done!" });
             }
+
             if (id == null)
             {
                 return BadRequest("Post not found");
